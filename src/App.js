@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Palette from'./Palette';
 import seedColors from './seedColors'
 import {generatePalette} from "./colorHelpers"
-import { render } from '@testing-library/react';
+
 
 class App extends Component{
   render(){
