@@ -17,12 +17,14 @@ this.changeLevel = this.changeLevel.bind(this)
         this.setState({level})
     }
     render(){
-        const colorBoxes =  this.props.palette.colors[this.state.level].map(color=>(
+        const {colors} = this.props.palette 
+        const {level} = this.state
+        const colorBoxes =  colors[this.state.level].map(color=>(
             <ColorBox background={color.hex} name={color.name}/>
         ))
         return(
             <div className="Palette">
-                <Slider  defaultValue={this.state.level} min={100} max={900} step={100} onAfterChange={this.changeLevel}/>
+                <Slider  defaultValue={level} min={100} max={900} step={100} onChange={this.changeLevel}/>
                 {/* NavBar goes here */}
               <div className="Palette-colors">
                 {colorBoxes}
