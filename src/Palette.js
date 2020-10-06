@@ -24,7 +24,9 @@ this.changeLevel = this.changeLevel.bind(this)
         ))
         return(
             <div className="Palette">
+                <div className="slider">
                 <Slider  defaultValue={level} min={100} max={900} step={100} onChange={this.changeLevel}/>
+                </div>
                 {/* NavBar goes here */}
               <div className="Palette-colors">
                 {colorBoxes}
