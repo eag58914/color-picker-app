@@ -35,6 +35,9 @@ gridGap: "5%"
 }
 
 class PaletteList extends Component {
+    goToPalette(id){
+        this.props.history.push(`/palette/${id}`)
+    }
     
     render() {
         const {palettes, classes } = this.props
@@ -47,7 +50,7 @@ class PaletteList extends Component {
                     <div className={classes.palettes}>
                     {palettes.map(palette=>(
                     <p>
-                    <MiniPalette {...palette} />
+                    <MiniPalette {...palette} handleClick= {()=>this.goToPalette(palette.id)}/>
                     </p>
                 ))}
                     </div>
