@@ -2,6 +2,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    bottom: 0px;
 }
 .Palette-colors{
     height: 100%;
