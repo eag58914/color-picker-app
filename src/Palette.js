@@ -25,7 +25,7 @@ this.changeFormat = this.changeFormat.bind(this)
         const colorBoxes = colors[level].map(color=>(
             <ColorBox background={color[format]} name={color.name} key={color.id} 
              moreUrl={`/palette/${id}/${color.id}`}
-             showLink={true}
+             showingFullPalette={true}
             />
         ))
         return(
