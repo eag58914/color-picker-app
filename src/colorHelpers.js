@@ -28,7 +28,7 @@ function generatePalette(starterPalette){
 }
 
 function getRange(hexColor){
-    console.log(hexColor)
+
     const end = "#ffff"
     return[
         chroma(hexColor).darken(1.4).hex(),
