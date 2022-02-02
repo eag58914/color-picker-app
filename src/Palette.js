@@ -21,6 +21,7 @@ this.changeFormat = this.changeFormat.bind(this)
     }
     render(){
         const {colors, paletteName,emoji, id} = this.props.palette 
+        const {classes} = this.props
         const {level, format} = this.state
         const colorBoxes = colors[level].map(color=>(
             <ColorBox background={color[format]} name={color.name} key={color.id} 
@@ -29,7 +30,7 @@ this.changeFormat = this.changeFormat.bind(this)
             />
         ))
         return(
-            <div className="Palette">
+            <div className='Palette'>
                 <NavBar level={level} changeLevel={this.changeLevel} handleChange={this.changeFormat} showingAllColors/>
                 
               <div className="Palette-colors">{colorBoxes}</div>
