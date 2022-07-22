@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ChromePicker } from 'react-color';
-import { Button } from '@material-ui/core';
+import { Button, colors } from '@material-ui/core';
 
 
 const drawerWidth = 400;
@@ -75,6 +75,16 @@ const styles = theme => ({
 });
 
 class NewPaletteForm extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            open:true,
+            currentColor:"teal",
+            colors:["purple", "#e15764"]
+        }
+        this.updateCurrentColor = this.updateCurrentColor.bind(this)
+        this.addNewColor = this.addNewColor.bind(this)
+    }
   state = {
     open: false,
   };
@@ -86,6 +96,12 @@ class NewPaletteForm extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
+  updateCurrentColor =(newColor) =>{
+this.setState({currentColor: newColor.hex})
+  }
+  addNewColor(){
+      this.setState({colors:[colors, this.state.currentColor]})
+  }
 
   render() {
     const { classes } = this.props;
@@ -142,8 +158,12 @@ class NewPaletteForm extends React.Component {
             <Button variant="contained" color="primary">Random Color </Button>
             </div>
 
-          <ChromePicker onChangeComplete={(newColor)=> console.log(newColor)} />
-          <Button variant="contained" color='primary'>Add Color</Button>
+          <ChromePicker  color={this.state.currentColor} onChangeComplete={this.updateCurrentColor} />
+          <Button  style={{backgroundColor: this.state.currentColor}}variant="contained" color='primary'
+          
+          onClick={this.addNewColor}
+          
+          >Add Color</Button>
           
         </Drawer>
         <main
@@ -152,6 +172,13 @@ class NewPaletteForm extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <ul>
+              {this.state.colors.map(color=>(
+                  <li>
+{color}
+                  </li>
+              ))}
+          </ul>
          
           
         </main>
