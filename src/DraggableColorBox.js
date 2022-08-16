@@ -12,7 +12,7 @@ root: {
     position: "relative",
     cursor: "pointer",
     marginBottom: "-3.5px",
-    "&hover $deleteIcon":{
+    "&:hover $deleteIcon":{
         color:"white",
         transform:"scale(1.5)"
     }
@@ -36,16 +36,17 @@ deleteIcon: {
 }
 
 function DraggableColorBox(props){
-    const {classes} = props
+    const {classes , handleClick, name, color} = props
     return <div 
-    className={classes.root} 
-    style={{backgroundColor: props.color}} >
+    className={props.classes.root} 
+    style={{backgroundColor: color}} 
+    >
     <div className={classes.boxContent}>
         <span>
-        {props.name}
+        {name}
         </span>
         <span>
-            <DeleteIcon className={classes.deleteIcon}/>
+            <DeleteIcon className={classes.deleteIcon} onClick={handleClick} />
         </span>
     </div></div>
 }
